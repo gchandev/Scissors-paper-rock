@@ -2,10 +2,11 @@
 // 1. create a function getComputerChoice to randomly generate rock, paper or scissors and stores to a variable.
 
 let choice = ["scissors", "paper", "rock"];
+let computerSelection;
 
 function getComputerChoice() {
-    let computerChoice = choice[Math.floor(Math.random()*choice.length)];
-    return computerChoice;
+    computerSelection = choice[Math.floor(Math.random()*choice.length)];
+    return computerSelection;
 }
 console.log(getComputerChoice());
 
@@ -17,7 +18,6 @@ console.log(getComputerChoice());
 function playerChoice() {
     let playerSelection = document.getElementById("player").value;
     playerSelection = playerSelection.toLowerCase();
-    console.log(playerSelection);
 
     if (playerSelection === "rock") {
         ;
@@ -32,16 +32,59 @@ function playerChoice() {
     }
     console.log(playerSelection);
    
-    playRound(playerSelection, computerChoice);
+    playRound(playerSelection, computerSelection);
 }
+
+// playRound function below is initiated as soon as the player clicks submit.
+// setout rules of scissor > paper > rock > scissors.
+// if they are the same value - alert tie, retry.
+let playerScore = 0;
+let computerScore = 0;
 
 function playRound (player, computer) {
-    
+    if (player === "rock") {
+        if (computer === "paper") {
+            alert("You loose");
+            ++computerScore;
+        } else if (computer === "scissors") {
+            alert("You win!")
+            ++playerScore;
+        } else {
+            alert("tie");
+        }
+    } else if (player === "paper") {
+        if (computer === "scissors") {
+            alert("You loose");
+            ++computerScore;
+        } else if (computer === "rock") {
+            alert("You win!")
+            ++playerScore;
+        } else {
+            alert("tie");
+        }
+    } else if (player === "scissors") {
+        if (computer === "rock") {
+            alert("You loose");
+            ++computerScore;
+        } else if (computer === "paper") {
+            alert("You win!")
+            ++playerScore;
+        } else {
+            alert("tie");
+        }
+    } else {
+        alert("player needs to select scissors, paper or rock")
+    }
+    console.log(playerScore);
+    console.log(computerScore);
+
+
 }
 
-// function playRound(playerSelection, computerSelection) {
-//   }
-
+for (let i = 0; i < 5; i++) {
+    getComputerChoice();
+    playerChoice();
+}
 
 // Make the player selection case-insensitive.
 
