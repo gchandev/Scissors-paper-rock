@@ -5,13 +5,42 @@ let choice = ["scissors", "paper", "rock"];
 
 function getComputerChoice() {
     let computerChoice = choice[Math.floor(Math.random()*choice.length)];
-    console.log(computerChoice);
+    return computerChoice;
 }
+console.log(getComputerChoice());
 
 // 2. write function that plays single round. Takes two parameters - player selection and computer selection.
 // Returns the deciding winner with a string.
 
+// game starts - playRound function starts.
 
+function playerChoice() {
+    let playerSelection = document.getElementById("player").value;
+    playerSelection = playerSelection.toLowerCase();
+    console.log(playerSelection);
+
+    if (playerSelection === "rock") {
+        ;
+    } else if (playerSelection === "scissors") {
+        ;
+    } else if (playerSelection === "paper") {
+        ;
+    } else {
+        alert("choose either rock, paper or scissors");
+        playerSelection = undefined;
+        document.getElementById("player").value = " ";
+    }
+    console.log(playerSelection);
+   
+    playRound(playerSelection, computerChoice);
+}
+
+function playRound (player, computer) {
+    
+}
+
+// function playRound(playerSelection, computerSelection) {
+//   }
 
 
 // Make the player selection case-insensitive.
@@ -25,14 +54,3 @@ function getComputerChoice() {
 
 
 
-
-
-function playRound(playerSelection, computerSelection) {
-    // your code here!
-
-
-  }
-   
-  const playerSelection = "rock";
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
