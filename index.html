@@ -5,19 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>game</title>
-    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Scissors, Paper Rock</h1>
+    <header>
+        <h1>Scissors, Paper Rock</h1>    
+    </header>
     <main>
-        <div>
-            <input type="text" id="player" />
-            <button onclick="playerChoice()">Submit</button>
+    <div class="score-board">
+        <div id="user-label" class="badge">user</div>
+        <div id="computer-label" class="badge">comp</div>
+        <span id="user-score">0</span>:<span id="computer-score">0</span>
+    </div>
+
+    <div class="results">
+        <p>Paper covers rock. You win!</p>
+    </div>
+
+    <div class="choices">
+        <div class="choice" id="r" >
+            <img src="images/hand-rock-skin-type-2.png" alt="">
         </div>
-        <div>
-            <p id="player-score"></p>
-            <p id="computer-score"></p>
+        <div class="choice" id="p">
+            <img src="images/hand-paper-skin-type-3.png" alt="">
         </div>
+        <div class="choice" id="s">
+            <img src="images/hand-scissors-skin-type-2.png" alt="">
+        </div>
+
+    </div>
+
+    <p id="action-message">Make your move.</p>
     </main>
+
+
+<script type="text/javascript" src="app.js"></script>
 </body>
 </html>

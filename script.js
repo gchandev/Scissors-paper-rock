@@ -81,16 +81,28 @@ function playRound (player, computer) {
 
 }
 
-for (let i = 0; i < 5; i++) {
-    getComputerChoice();
-    playerChoice();
-}
+// display current scores of players and computer
+// let playerS = document.getElementById("player-score");
+// playerS.innerHTML = `Player Score: ${playerScore}`;
+
+
+// let computerS = document.getElementById("computer-score");
 
 // Make the player selection case-insensitive.
 
 // 3. New function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a
 // winner or loser at the end. Use a for loop.
 // Use a console.log to display the results of each round and the winner at the end.
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        getComputerChoice();
+        playerChoice();
+    }
+    
+}
+
+
 
 // 4. prompt to get user input.
 
