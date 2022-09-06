@@ -8,6 +8,12 @@ const result_p = document.querySelector(".results > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
+const reset_div = document.getElementById("reset");
+const modal = document.getElementById("modal");
+const overlay = document.getElementById("overlay")
+const playAgainButton = document.querySelector(".play-again");
+const gameOverMsg = document.querySelector(".game-over-msg");
+
 
 // Step TWO: Event listeners, game logic, display results in the DOM
 // when user clicks on a button, take the value of the button, and then
@@ -26,6 +32,15 @@ function getComputerChoice() {
 // NEVER jam all the logic in one function;
 // when User wins we increase users score by 1.
 
+
+function reset() {
+    userScore = 0;
+    computerScore = 0;
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = computerScore;
+}
+
+
 // This is new way of using if statement. 
 // return stops the function and does not execute code below it.
 function convertToWord(letter) {
@@ -39,6 +54,7 @@ function win(userChoice, computerChoice) {
     const smallCompWord = "comp".fontsize(3);
     const userChoice_div = document.getElementById(userChoice);
     userScore++;
+    gameOver();
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
     result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} beats ${convertToWord(computerChoice)}${smallCompWord}, You win! 🔥`;
@@ -46,13 +62,12 @@ function win(userChoice, computerChoice) {
     setTimeout(function() { userChoice_div.classList.remove('green-glow') }, 300);
 }
 
-
-
 function lose(userChoice, computerChoice) {
     const smallUserWord = "user".fontsize(3);
     const smallCompWord = "comp".fontsize(3);
     const userChoice_div = document.getElementById(userChoice);
     computerScore++;
+    gameOver();
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
     result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} loses to ${convertToWord(computerChoice)}${smallCompWord}, You lost! 💩`;
@@ -91,6 +106,40 @@ function game(userChoice) {
     }
 }
 
+function winMsg() {
+    if (userScore === 5) {
+        gameOverMsg.innerHTML = 'You WON! 🔥';
+    } else if (computerScore === 5) {
+        gameOverMsg.innerHTML = 'You LOST... 💩';
+    } else {
+        return;
+    }
+}
+
+
+function gameOver() {
+    if (userScore === 5 || computerScore === 5) {
+        openModal();
+        winMsg();
+     }
+    playAgainButton.addEventListener('click', function() {
+        closeModal();
+    })
+}
+
+function openModal() {
+    modal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+    reset();
+}
+
+
+
 //event listeners for user clicks on images;
 function main() {
     rock_div.addEventListener('click', function() {
@@ -103,6 +152,9 @@ function main() {
 
     scissors_div.addEventListener('click', function() {
         game("s");
+    })
+    reset_div.addEventListener('click', function() {
+        reset();
     })
 }
 
