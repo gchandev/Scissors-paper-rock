@@ -9,10 +9,10 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const reset_div = document.getElementById("reset");
-const modal = document.getElementById("modal");
-const overlay = document.getElementById("overlay")
-const playAgainButton = document.querySelector(".play-again");
-const gameOverMsg = document.querySelector(".game-over-msg");
+const modal_div = document.getElementById("modal");
+const overlay_div = document.getElementById("overlay")
+const playAgain_button = document.querySelector(".play-again");
+const gameOverMsg_p = document.querySelector(".game-over-msg");
 
 
 // Step TWO: Event listeners, game logic, display results in the DOM
@@ -108,33 +108,32 @@ function game(userChoice) {
 
 function winMsg() {
     if (userScore === 5) {
-        gameOverMsg.innerHTML = 'You WON! 🔥';
+        gameOverMsg_p.innerHTML = 'You WON! 🔥';
     } else if (computerScore === 5) {
-        gameOverMsg.innerHTML = 'You LOST... 💩';
+        gameOverMsg_p.innerHTML = 'You LOST... 💩';
     } else {
         return;
     }
 }
-
 
 function gameOver() {
     if (userScore === 5 || computerScore === 5) {
         openModal();
         winMsg();
      }
-    playAgainButton.addEventListener('click', function() {
+    playAgain_button.addEventListener('click', function() {
         closeModal();
     })
 }
 
 function openModal() {
-    modal.classList.add('active');
-    overlay.classList.add('active');
+    modal_div.classList.add('active');
+    overlay_div.classList.add('active');
 }
 
 function closeModal() {
-    modal.classList.remove('active');
-    overlay.classList.remove('active');
+    modal_div.classList.remove('active');
+    overlay_div.classList.remove('active');
     reset();
 }
 
